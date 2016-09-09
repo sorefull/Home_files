@@ -16,9 +16,10 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Features <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Lock storrage</a></li>
+            <% if user_signed_in? %><li><a href="#">Lock storrage</a></li><% end %>
             <li><a href="#">Open storrage</a></li>
             <li><a href="#">Family Blog</a></li>
+            <li><a href="#">Family Dashboard</a></li>
             <li role="separator" class="divider"></li>
             <!-- <li><a href="#">About our family</a></li> -->
             <li><%= link_to 'About our family', welcome_about_path %></li>
@@ -26,16 +27,20 @@
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Log in</a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Account <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">My Account</a></li>
-            <li><a href="#">Create a user</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Log out</a></li>
-          </ul>
-        </li>
+        <% unless user_signed_in? %>
+          <li><%= link_to 'Log in', new_user_session_path %></li>
+        <% else %>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Account <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">My Account</a></li>
+              <li><a href="#">Create a user</a></li>
+              <li role="separator" class="divider"></li>
+              <!-- <li><a href="#">Log out</a></li> -->
+              <li><%= link_to 'Log out', destroy_user_session_path, :method => :delete %></li>
+            </ul>
+          </li>
+        <% end %>
       </ul>
     </div>
   </div>

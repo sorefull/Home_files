@@ -10,6 +10,23 @@
 
   <body>
     <%= render "source/header.html.erb" %>
+
+    <div class="container">
+      <% if notice %>
+        <div class="alert alert-info", style="width:400px">
+          <strong>Info!</strong> <%= notice %>
+        </div>
+      <% end %>
+
+      <% if alert %>
+        <div class="alert alert-warning", style="width:500px">
+          <strong>Warning!</strong> <%= alert %>
+        </div>
+      <% end %>
+
     <%= yield %>
+
+    </div>
+
   </body>
 </html>
