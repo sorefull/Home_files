@@ -1,6 +1,6 @@
 
 
-  <header class="jumbotron hero-spacer" style="background-image: url(http://images.thesartorialist.com/photos/binnysvm@.jpg);color:white;">
+  <header class="jumbotron hero-spacer" style="background-image:url(images/header.jpg);color:white;">
     <h1>Welcome to our Family!</h1>
     <p>This is site of our family. Here you can see our photos of last year joreny, out cat. Moreover you can read our family blog. And what is more, there is a dashboard of our social network activity.</p>
     <!-- <p><a class="btn btn-primary btn-large">Call to action!</a></p> -->
@@ -19,10 +19,11 @@
     <% if user_signed_in? %>
       <div class="col-md-3 col-sm-6 hero-feature">
         <div class="thumbnail">
-          <img src="http://core0.staticworld.net/images/article/2014/05/whisper_shh-100268432-primary.idge.jpg" alt="Lock Storrage" style="width:253px;height:178px;">
+          <!-- <img src="http://core0.staticworld.net/images/article/2014/05/whisper_shh-100268432-primary.idge.jpg" alt="Lock Storrage" style="width:253px;height:178px;"> -->
+          <%= image_tag 'lock.jpg' %>
           <div class="caption">
             <h3>Private Storage</h3>
-            <p>Here you can store your files and use them everywhere.</p>
+            <p>Here you can store your files.</p>
             <p>
               <a href="#" class="btn btn-primary">Go to!</a> <a href="#" class="btn btn-default">More Info</a>
             </p>
@@ -33,7 +34,8 @@
 
     <div class="col-md-3 col-sm-6 hero-feature">
       <div class="thumbnail">
-        <img src="http://editorial.designtaxi.com/news-starwarsfamily0712/2.jpg" alt="Storrage" style="width:253px;height:178px;">
+        <!-- <img src="http://editorial.designtaxi.com/news-starwarsfamily0712/2.jpg" alt="Storrage" style="width:253px;height:178px;"> -->
+        <%= image_tag 'public.jpg' %>
         <div class="caption">
           <h3>Public Storage</h3>
           <p>Our family folder: sea, jim, pets and love.</p>
@@ -46,7 +48,8 @@
 
     <div class="col-md-3 col-sm-6 hero-feature">
       <div class="thumbnail">
-        <img src="https://lachatupdate.files.wordpress.com/2015/11/granny-grandma-internet-old-people.jpg" alt="Blog" style="width:253px;height:178px;">
+        <!-- <img src="https://lachatupdate.files.wordpress.com/2015/11/granny-grandma-internet-old-people.jpg" alt="Blog" style="width:253px;height:178px;"> -->
+        <%= image_tag 'blog.jpg' %>
         <div class="caption">
           <h3>Family Blog</h3>
           <p>Our plans, rules. tasks, wishes and thoughts.</p>
@@ -59,7 +62,8 @@
 
     <div class="col-md-3 col-sm-6 hero-feature">
       <div class="thumbnail">
-        <img src="http://www.ghs-mh.de/relationships/images/families/coll_de_l_1.jpg" alt="Dashboard" style="width:253px;height:178px;">
+        <!-- <img src="http://www.ghs-mh.de/relationships/images/families/coll_de_l_1.jpg" alt="Dashboard" style="width:253px;height:178px;"> -->
+        <%= image_tag 'board.jpg' %>
         <div class="caption">
           <h3>Family Dashboard</h3>
           <p>Here you cam monitore our social live.</p>
