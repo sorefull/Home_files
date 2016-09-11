@@ -3,7 +3,12 @@
   <p>
     <%= @post.text %>
   </p>
-  <% if user_signed_in? %>
+  <p>
+    <%= image_tag @post.image.show.url %><br>
+    <span class="text-muted"><%= @post.created_at.strftime('%b %d, %Y') %></span>
+  </p>
+
+  <% if user_signed_in? && current_user == @post.user %>
     <p>
       <%= link_to "Delete", @post, method: :delete, data: { confirm: "Are you sure?" }, :type => "button", :class => "btn btn-danger" %>
     </p>

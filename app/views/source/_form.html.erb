@@ -1,5 +1,18 @@
 <div class="container">
-  <%= form_for @post do |post| %>
+  <%= form_for @post, html: { multipart: true } do |post| %>
+
+  <% if @post.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+        <ul>
+        <% @post.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
     <div class="input-group">
       <span class="input-group-addon" id="sizing-addon1">Title</span>
       <%= post.text_field :title, :class => "form-control", :style => "width:600px", :placeholder => "Enter title here"%>
@@ -8,6 +21,11 @@
       <span class="input-group-addon" id="sizing-addon1">Text</span>
       <%= post.text_area :text, :class => "form-control", :style => "height:200px; min-width:600px; max-width:600px;", :placeholder => "Enter text here"%>
     </div><br>
+
+    <div class="input-group">
+      <%= post.file_field :image %>
+    </div><br>
+
     <%= post.submit "Save", class: "btn btn-primary"%>
     <% end %>
 </div>
