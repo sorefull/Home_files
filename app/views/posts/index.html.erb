@@ -1,0 +1,40 @@
+<% unless @posts.empty? %>
+  <div class="container">
+    <div class="row">
+      <% @posts.each do |post| %>
+        <div class="col-md-4 portfolio-item">
+          <%= link_to root_path do %>
+            <%= image_tag "http://placehold.it/700x400", class: "img-responsive" %>
+          <% end %>
+                    <!-- <img class="img-responsive" src="http://placehold.it/700x400" alt=""> -->
+          <h3>
+            <%= link_to post.title, post_path(post) %>
+          </h3>
+          <p class="post-meta">Post created by <%= link_to post.user.username %> on <%= post.created_at.strftime('%b %d, %Y') %></p>
+        </div>
+      <% end %>
+    </div>
+    <% if user_signed_in? %>
+      <p>
+        <%= button_to 'Add new Post', new_post_path, method: :get, :class => "btn btn-primary btn-large" %>
+      </p>
+    <% end %>
+    <div class="row text-center">
+      <div class="col-lg-12">
+        <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
+      </div>
+    </div>
+  </div>
+<% else %>
+  <header class="jumbotron hero-spacer" style="background-image:url(images/posts/empty.jpg);color:white;">
+    <h1>Sowwy, no posts yet...</h1>
+    <p>
+      I hope there wold be some posts in the nearest future. Wisit the <%= link_to 'Dash board', root_path %>, maybe there would be something to read.
+    </p>
+    <% if user_signed_in? %>
+      <p>
+        <%= button_to 'Add new Post', new_post_path, method: :get, :class => "btn btn-primary btn-large" %>
+      </p>
+    <% end %>
+  </header>
+<% end %>

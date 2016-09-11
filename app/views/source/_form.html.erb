@@ -1,0 +1,11 @@
+<%= form_for @post do |post| %>
+  <div class="input-group">
+    <span class="input-group-addon" id="sizing-addon1">Title</span>
+    <%= post.text_field :title, :class => "form-control", :style => "width:600px", :placeholder => "Enter title here"%>
+  </div><br>
+  <div class="input-group">
+    <span class="input-group-addon" id="sizing-addon1">Text</span>
+    <%= post.text_area :text, :class => "form-control", :style => "height:200px; min-width:600px; max-width:600px;", :placeholder => "Enter text here"%>
+  </div><br>
+  <%= post.submit "Save", class: "btn btn-primary"%>
+  <% end %>

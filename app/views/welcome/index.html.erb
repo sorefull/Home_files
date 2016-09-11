@@ -11,7 +11,7 @@
 
   <div class="row">
     <div class="col-lg-12">
-      <h3>Latest Features</h3>
+      <h3>Features</h3>
     </div>
   </div>
 
@@ -23,9 +23,12 @@
           <%= image_tag 'lock.jpg' %>
           <div class="caption">
             <h3>Private Storage</h3>
-            <p>Here you can store your files.</p>
+            <p>Here you can store your files and photos.</p>
             <p>
-              <a href="#" class="btn btn-primary">Go to!</a> <a href="#" class="btn btn-default">More Info</a>
+              <div class="btn-group" role="group" aria-label="Basic example">
+                <%= link_to 'Go to!', root_path, :type => "button", :class => "btn btn-secondary btn btn-primary" %>
+                <%= link_to 'More Info!', root_path, :type => "button", :class => "btn btn-secondary btn btn-default" %>
+              </div>
             </p>
           </div>
         </div>
@@ -40,7 +43,10 @@
           <h3>Public Storage</h3>
           <p>Our family folder: sea, jim, pets and love.</p>
           <p>
-            <a href="#" class="btn btn-primary">Go to!</a> <a href="#" class="btn btn-default">More Info</a>
+            <div class="btn-group" role="group" aria-label="Basic example">
+              <%= link_to 'Go to!', root_path, :type => "button", :class => "btn btn-secondary btn btn-primary" %>
+              <%= link_to 'More Info!', root_path, :type => "button", :class => "btn btn-secondary btn btn-default" %>
+            </div>
           </p>
         </div>
       </div>
@@ -54,7 +60,11 @@
           <h3>Family Blog</h3>
           <p>Our plans, rules. tasks, wishes and thoughts.</p>
           <p>
-            <a href="#" class="btn btn-primary">Go to!</a> <a href="#" class="btn btn-default">More Info</a>
+            <!-- <a href="#" class="btn btn-primary">Go to!</a> <a href="#" class="btn btn-default">More Info</a> -->
+            <div class="btn-group" role="group" aria-label="Basic example">
+              <%= link_to 'Go to!', posts_path, :type => "button", :class => "btn btn-secondary btn btn-primary" %>
+              <%= link_to 'More Info!', about_posts_path, :type => "button", :class => "btn btn-secondary btn btn-default" %>
+            </div>
           </p>
         </div>
       </div>
@@ -68,7 +78,10 @@
           <h3>Family Dashboard</h3>
           <p>Here you cam monitore our social live.</p>
           <p>
-            <a href="#" class="btn btn-primary">Go to!</a> <a href="#" class="btn btn-default">More Info</a>
+            <div class="btn-group" role="group" aria-label="Basic example">
+              <%= link_to 'Go to!', root_path, :type => "button", :class => "btn btn-secondary btn btn-primary" %>
+              <%= link_to 'More Info!', root_path, :type => "button", :class => "btn btn-secondary btn btn-default" %>
+            </div>
           </p>
         </div>
       </div>
