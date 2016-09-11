@@ -1,11 +1,11 @@
 <header class="jumbotron hero-spacer" style="background-image:url(images/posts/empty.jpg);">
   <h1><%= @post.title %></h1>
+  <span class="text-muted">Post created by <%= link_to @post.user.username %> on <%= @post.created_at.strftime('%b %d, %Y') %></span>
   <p>
     <%= @post.text %>
   </p>
   <p>
     <%= image_tag @post.image.show.url %><br>
-    <span class="text-muted"><%= @post.created_at.strftime('%b %d, %Y') %></span>
   </p>
 
   <% if user_signed_in? && current_user == @post.user %>

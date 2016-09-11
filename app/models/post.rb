@@ -16,8 +16,8 @@ class Post < ApplicationRecord
   mount_uploader :image, ImageUploader
   validates_processing_of :image
   validate :image_size_validation
-  validates :title, presence: true
-  validates :text, presence: true
+  validates :title, presence: true, length: { in: 6..14 }
+  validates :text, presence: true, length: { in: 10..140 }
   validates :image, presence: true
 
   private
