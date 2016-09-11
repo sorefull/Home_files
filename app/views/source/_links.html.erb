@@ -1,0 +1,5 @@
+<% if user_signed_in? %>
+  <% if controller_name == 'posts' %>
+    <li><%= link_to 'New post', new_post_path %></li>
+  <% end %>
+<% end %>

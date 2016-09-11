@@ -1,10 +1,11 @@
-
-
-  <header class="jumbotron hero-spacer" style="background-image:url(images/header.jpg);color:white;">
-    <h1>Welcome to our Family!</h1>
-    <p>This is site of our family. Here you can see our photos of last year joreny, out cat. Moreover you can read our family blog. And what is more, there is a dashboard of our social network activity.</p>
-    <!-- <p><a class="btn btn-primary btn-large">Call to action!</a></p> -->
-    <p><%= button_to 'Read more about us', welcome_about_path, method: :get, :class => "btn btn-primary btn-large" %></p>
+<header class="jumbotron hero-spacer" style="background-image:url(images/header.jpg);color:white;">
+  <h1>Welcome to our Family!</h1>
+  <p>
+    This is site of our family. Here you can see our photos of last year joreny, out cat. Moreover you can read our family blog. And what is more, there is a dashboard of our social network activity.
+  </p>
+  <p>
+    <%= button_to 'Read more about us', welcome_about_path, method: :get, :class => "btn btn-primary btn-large" %>
+  </p>
   </header>
 
   <hr>
@@ -19,8 +20,9 @@
     <% if user_signed_in? %>
       <div class="col-md-3 col-sm-6 hero-feature">
         <div class="thumbnail">
-          <!-- <img src="http://core0.staticworld.net/images/article/2014/05/whisper_shh-100268432-primary.idge.jpg" alt="Lock Storrage" style="width:253px;height:178px;"> -->
-          <%= image_tag 'lock.jpg' %>
+          <%= link_to root_path do %>
+            <%= image_tag 'lock.jpg' %>
+          <% end %>
           <div class="caption">
             <h3>Private Storage</h3>
             <p>Here you can store your files and photos.</p>
@@ -37,8 +39,9 @@
 
     <div class="col-md-3 col-sm-6 hero-feature">
       <div class="thumbnail">
-        <!-- <img src="http://editorial.designtaxi.com/news-starwarsfamily0712/2.jpg" alt="Storrage" style="width:253px;height:178px;"> -->
-        <%= image_tag 'public.jpg' %>
+        <%= link_to root_path do %>
+          <%= image_tag 'public.jpg' %>
+        <% end %>
         <div class="caption">
           <h3>Public Storage</h3>
           <p>Our family folder: sea, jim, pets and love.</p>
@@ -54,13 +57,13 @@
 
     <div class="col-md-3 col-sm-6 hero-feature">
       <div class="thumbnail">
-        <!-- <img src="https://lachatupdate.files.wordpress.com/2015/11/granny-grandma-internet-old-people.jpg" alt="Blog" style="width:253px;height:178px;"> -->
-        <%= image_tag 'blog.jpg' %>
+        <%= link_to posts_path do %>
+          <%= image_tag 'blog.jpg' %>
+        <% end %>
         <div class="caption">
           <h3>Family Blog</h3>
           <p>Our plans, rules. tasks, wishes and thoughts.</p>
           <p>
-            <!-- <a href="#" class="btn btn-primary">Go to!</a> <a href="#" class="btn btn-default">More Info</a> -->
             <div class="btn-group" role="group" aria-label="Basic example">
               <%= link_to 'Go to!', posts_path, :type => "button", :class => "btn btn-secondary btn btn-primary" %>
               <%= link_to 'More Info!', about_posts_path, :type => "button", :class => "btn btn-secondary btn btn-default" %>
@@ -72,8 +75,9 @@
 
     <div class="col-md-3 col-sm-6 hero-feature">
       <div class="thumbnail">
-        <!-- <img src="http://www.ghs-mh.de/relationships/images/families/coll_de_l_1.jpg" alt="Dashboard" style="width:253px;height:178px;"> -->
-        <%= image_tag 'board.jpg' %>
+        <%= link_to root_path do %>
+          <%= image_tag 'board.jpg' %>
+        <% end %>
         <div class="caption">
           <h3>Family Dashboard</h3>
           <p>Here you cam monitore our social live.</p>
@@ -88,9 +92,3 @@
     </div>
 
   </div>
-
-  <!-- <hr>
-
-   link_to image_tag("Search.png", :border=>0, :class => 'dock-item'), :action => 'search', :controller => 'pages' <span>Search</span></a>
-
-  <%= render 'source/footer.html.erb' %> -->

@@ -1,11 +1,11 @@
-<header class="jumbotron hero-spacer" style="background-image:url(images/posts/empty.jpg);color:white;">
-  <h1>Sowwy, no posts yet...</h1>
+<header class="jumbotron hero-spacer" style="background-image:url(images/posts/empty.jpg);">
+  <h1><%= @post.title %></h1>
   <p>
-    I hope there wold be some posts in the nearest future. Wisit the <%= link_to 'Dash board', root_path %>, maybe there would be something to read.
+    <%= @post.text %>
   </p>
   <% if user_signed_in? %>
     <p>
-      <%= button_to 'Add new Post', new_post_path, method: :get, :class => "btn btn-primary btn-large" %>
+      <%= link_to "Delete", @post, method: :delete, data: { confirm: "Are you sure?" }, :type => "button", :class => "btn btn-danger" %>
     </p>
   <% end %>
 </header>

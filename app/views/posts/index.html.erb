@@ -33,7 +33,7 @@
     </p>
     <% if user_signed_in? %>
       <p>
-        <%= button_to 'Add new Post', new_post_path, method: :get, :class => "btn btn-primary btn-large" %>
+        <%= link_to 'Add new Post', new_post_path, :class => "btn btn-primary btn-large" %>
       </p>
     <% end %>
   </header>
