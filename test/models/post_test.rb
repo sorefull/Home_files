@@ -2,13 +2,15 @@
 #
 # Table name: posts
 #
-#  id         :integer          not null, primary key
-#  title      :string
-#  text       :text
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  user_id    :integer
-#  image      :string
+#  id            :integer          not null, primary key
+#  title         :string
+#  text          :text
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  user_id       :integer
+#  image         :string
+#  about_welcome :boolean          default(FALSE)
+#  about_user    :integer          default(0), not null
 #
 
 require 'test_helper'

@@ -1,2 +1,20 @@
-<h1>Welcome#about</h1>
-<p>Find me in app/views/welcome/about.html.erb</p>
+<% if @post %>
+  <header class="jumbotron hero-spacer" style="background-image:url(images/posts/form.jpg);">
+    <h1>About our Family!!!</h1>
+    <p>
+      <%= @post.text %>
+    </p>
+    <p>
+      <%= link_to image_url(@post.image) do %>
+        <%= image_tag @post.image.show.url %><br>
+      <% end %>
+    </p>
+  </header>
+<% else %>
+  <header class="jumbotron hero-spacer" style="background-image:url(images/posts/empty.jpg);color:white;">
+    <h1>Sory, no info yet...</h1>
+    <p>
+      I hope there wold be some info in the nearest future. Wisit the <%= link_to 'Dash board', root_path %> or <%= link_to 'Posts page', posts_path %> maybe there would be something to read.
+    </p>
+  </header>
+<% end %>

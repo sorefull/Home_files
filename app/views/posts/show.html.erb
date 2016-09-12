@@ -5,12 +5,14 @@
     <%= @post.text %>
   </p>
   <p>
-    <%= image_tag @post.image.show.url %><br>
+    <%= link_to image_url(@post.image) do %>
+      <%= image_tag @post.image.show.url %><br>
+    <% end %>
   </p>
 
   <% if user_signed_in? && current_user == @post.user %>
     <p>
-      <%= link_to "Delete", @post, method: :delete, data: { confirm: "Are you sure?" }, :type => "button", :class => "btn btn-danger" %>
+      <%= link_to "Delete", @post, method: :delete, data: { confirm: "Are you sure?" }, :type => "button", :class => "btn btn-danger" %>      
     </p>
   <% end %>
 </header>

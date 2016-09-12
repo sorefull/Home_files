@@ -1,3 +1,8 @@
-<% if controller_name == 'posts' && (action_name == 'show' or action_name == 'new') %>
-  <li><%= link_to 'All posts', posts_path %></li>
+<% if controller_name == 'posts' %>
+  <% if action_name == 'show' or action_name == 'new' or action_name == 'my_posts' %>
+  <li><%= link_to 'All posts', posts_path, :style => "color:CornflowerBlue;" %></li>
+  <% end %>
+  <!-- <% if action_name == 'show' or action_name == 'new' or action_name == 'index' %>
+    <li><%= link_to 'My posts', :style => "color:CornflowerBlue;" %></li>
+  <% end %> -->
 <% end %>

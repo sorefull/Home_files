@@ -2,13 +2,15 @@
 #
 # Table name: posts
 #
-#  id         :integer          not null, primary key
-#  title      :string
-#  text       :text
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  user_id    :integer
-#  image      :string
+#  id            :integer          not null, primary key
+#  title         :string
+#  text          :text
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  user_id       :integer
+#  image         :string
+#  about_welcome :boolean          default(FALSE)
+#  about_user    :integer          default(0), not null
 #
 
 class Post < ApplicationRecord
@@ -17,7 +19,7 @@ class Post < ApplicationRecord
   validates_processing_of :image
   validate :image_size_validation
   validates :title, presence: true, length: { in: 6..14 }
-  validates :text, presence: true, length: { in: 10..140 }
+  validates :text, presence: true, length: { in: 10..300 }
   validates :image, presence: true
 
   private

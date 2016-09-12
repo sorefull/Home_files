@@ -1,5 +1,8 @@
 <% if user_signed_in? %>
   <% if controller_name == 'posts' %>
-    <li><%= link_to 'New post', new_post_path %></li>
+    <li><%= link_to 'New post', new_post_path, :style => "color:CornflowerBlue;" %></li>
+    <% if action_name == 'show' %>
+      <li><%= link_to 'Set as a family info', set_welcome_path(@post), :style => "color:CornflowerBlue;" %></li>
+    <% end %>
   <% end %>
 <% end %>

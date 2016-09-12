@@ -13,6 +13,21 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
   end
 
+  def set_to_about_welcome
+    old_post = Post.find_by(about_welcome: :true)
+    if old_post
+      old_post.about_welcome = false
+      old_post.save
+    end
+    @post = Post.find(params[:id])
+    @post.about_welcome = true
+    if @post.save
+      redirect_to welcome_about_path, :notice => "Your about family was succesfully updated."
+    else
+      redirect_to post_path(@post), alert: @post.errors
+    end
+  end
+
   def create
     @post = current_user.posts.build(post_params)
     if @post.save
