@@ -1,0 +1,28 @@
+<% unless @folders.empty? %>
+  <div class="container">
+    <div class="row text-center">
+      <% @folders.each do |folder| %>
+        <div class="col-md-2 portfolio-item">
+          <%= link_to folder_path(folder) do %>
+            <%= image_tag "folders/folder.png", class: "img-responsive" %>
+          <h4>
+            <%= folder.title %>
+          </h4>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+    <div class="row text-center">
+      <div class="col-lg-12">
+        <%= will_paginate @folders, renderer: BootstrapPagination::Rails %>
+      </div>
+    </div>
+  </div>
+<% else %>
+  <header class="jumbotron hero-spacer" style="background-image:url(images/folders/empty.jpg);color:white;">
+    <h1>No folders yet...</h1>
+    <p>
+      But you need them? Just click "New folder" and have fun!
+    </p>
+  </header>
+<% end %>

@@ -1,0 +1,32 @@
+<% unless @contents.empty? %>
+<table class="table">
+  <thead>
+    <tr>
+      <th>File Name</th>
+      <th>Size</th>
+      <th>Created at</th>
+    </tr>
+  </thead>
+  <tbody>
+<% @contents.each do |content| %>
+  <tr>
+    <td><%= link_to content.content_identifier, content.content.url %></td>
+    <td class="text-muted"><%= number_to_human_size(content.content.size) %></td>
+    <td class="text-muted"><%= content.created_at.strftime('%b %d, %Y') %></td>
+  </tr>
+<% end %>
+</tbody>
+</table>
+<div class="row text-center">
+  <div class="col-lg-12">
+    <%= will_paginate @contents, renderer: BootstrapPagination::Rails %>
+  </div>
+</div>
+<% else %>
+  <header class="jumbotron hero-spacer" style="background-image:url(images/posts/empty.jpg);color:white;">
+    <h1>Sory, no public FileUtils yet...</h1>
+    <p>
+      I hope there wold be some files in the nearest future. Wisit the <%= link_to 'Dash board', root_path %> or <%= link_to 'Family Blog', posts_path %> maybe there would be something to read.
+    </p>
+  </header>
+<% end %>

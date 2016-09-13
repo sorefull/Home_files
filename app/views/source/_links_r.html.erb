@@ -2,7 +2,17 @@
   <% if controller_name == 'posts' %>
     <li><%= link_to 'New post', new_post_path, :style => "color:CornflowerBlue;" %></li>
     <% if action_name == 'show' %>
-      <li><%= link_to 'Set as a family info', set_welcome_path(@post), :style => "color:CornflowerBlue;" %></li>
+      <li><%= link_to 'Set as a family info', set_welcome_path(@post) %></li>
+      <li><%= link_to "Delete", @post, method: :delete, data: { confirm: "Are you sure?" }, :style => "color:LightCoral ;" %></li>
+    <% end %>
+  <% end %>
+  <% if controller_name == 'folders' %>
+    <%if action_name == 'index' %>
+      <li><%= link_to 'New folder', new_folder_path, :style => "color:CornflowerBlue;" %></li>
+    <% end %>
+    <% if action_name == 'show' %>
+      <li><%= link_to 'New file', new_folder_content_path(@folder), :style => "color:CornflowerBlue;" %></li>
+      <li><%= link_to "Delete #{@folder.title}", @folder, method: :delete, data: { confirm: "Are you sure?" }, :style => "color:LightCoral ;"  %></li>
     <% end %>
   <% end %>
 <% end %>

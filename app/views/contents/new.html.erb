@@ -1,0 +1,5 @@
+<%= bootstrap_form_for([@folder, @content]) do |f| %>
+  <%= f.file_field :content %>
+  <%= f.submit "Create!" %>
+  <span>should be less than 500KB</span>
+<% end %>

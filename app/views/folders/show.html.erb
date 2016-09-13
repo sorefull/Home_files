@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="row">
+      <div class="col-md-2 portfolio-item">
+          <%= image_tag "folders/folder.png", class: "img-responsive" %>
+      </div>
+
+      <div class="col-md-5 portfolio-item">
+        <h2>Name: <%= @folder.title %></h2>
+        <h3>Created at: <%= @folder.created_at.strftime('%b %d, %Y') %></h3>
+        <% unless @contents.empty? %><h3 class="text-muted">Cout of files: <%= @folder.contents.count %></h3><% else %><h4 class="text-muted">Empty Folder</h4><% end %>
+      </div>
+  </div>
+</div>
+<% unless @contents.empty? %>
+<table class="table">
+  <thead>
+    <tr>
+      <th>File Name</th>
+      <th>Size</th>
+      <th>Created at</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<% @contents.each do |content| %>
+  <tr>
+    <td><%= link_to content.content_identifier, content.content.url %></td>
+    <td class="text-muted"><%= number_to_human_size(content.content.size) %></td>
+    <td class="text-muted"><%= content.created_at.strftime('%b %d, %Y') %></td>
+    <td><%= link_to "Delete!", [@folder, content], data: { confirm: "Are you sure?" }, method: :delete,  :style => "color:LightCoral;"  %></td>
+    <td><%= link_to content.public ? 'Hide!' : 'Publish', folder_set_public_path(@folder, content), :style => "color:CornflowerBlue;"  %></td>
+  </tr>
+<% end %>
+</tbody>
+</table>
+<div class="row text-center">
+  <div class="col-lg-12">
+    <%= will_paginate @contents, renderer: BootstrapPagination::Rails %>
+  </div>
+</div>
+<% end %>

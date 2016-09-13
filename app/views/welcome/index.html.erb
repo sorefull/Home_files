@@ -10,17 +10,11 @@
 
   <hr>
 
-  <div class="row">
-    <div class="col-lg-12">
-      <h3>Features</h3>
-    </div>
-  </div>
-
   <div class="row text-center">
     <% if user_signed_in? %>
       <div class="col-md-3 col-sm-6 hero-feature">
         <div class="thumbnail">
-          <%= link_to root_path do %>
+          <%= link_to folders_path do %>
             <%= image_tag 'lock.jpg' %>
           <% end %>
           <div class="caption">
@@ -28,8 +22,8 @@
             <p>Here you can store your files and photos.</p>
             <p>
               <div class="btn-group" role="group" aria-label="Basic example">
-                <%= link_to 'Go to!', root_path, :type => "button", :class => "btn btn-secondary btn btn-primary" %>
-                <%= link_to 'More Info!', root_path, :type => "button", :class => "btn btn-secondary btn btn-default" %>
+                <%= link_to 'Go to!', folders_path, :type => "button", :class => "btn btn-secondary btn btn-primary" %>
+                <%= link_to 'More Info!', about_folders_path, :type => "button", :class => "btn btn-secondary btn btn-default" %>
               </div>
             </p>
           </div>
@@ -39,7 +33,7 @@
 
     <div class="col-md-3 col-sm-6 hero-feature">
       <div class="thumbnail">
-        <%= link_to root_path do %>
+        <%= link_to public_folder_path do %>
           <%= image_tag 'public.jpg' %>
         <% end %>
         <div class="caption">
@@ -47,8 +41,8 @@
           <p>Our family folder: sea, jim, pets and love.</p>
           <p>
             <div class="btn-group" role="group" aria-label="Basic example">
-              <%= link_to 'Go to!', root_path, :type => "button", :class => "btn btn-secondary btn btn-primary" %>
-              <%= link_to 'More Info!', root_path, :type => "button", :class => "btn btn-secondary btn btn-default" %>
+              <%= link_to 'Go to!', public_folder_path, :type => "button", :class => "btn btn-secondary btn btn-primary" %>
+              <%= link_to 'More Info!', about_public_folders_path, :type => "button", :class => "btn btn-secondary btn btn-default" %>
             </div>
           </p>
         </div>

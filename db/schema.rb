@@ -10,7 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160912094751) do
+ActiveRecord::Schema.define(version: 20160913194012) do
+
+  create_table "contents", force: :cascade do |t|
+    t.string   "content"
+    t.integer  "folder_id"
+    t.integer  "user_id"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.boolean  "public",     default: false
+    t.index ["folder_id"], name: "index_contents_on_folder_id"
+    t.index ["user_id"], name: "index_contents_on_user_id"
+  end
+
+  create_table "folders", force: :cascade do |t|
+    t.string   "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "user_id"
+  end
 
   create_table "posts", force: :cascade do |t|
     t.string   "title"

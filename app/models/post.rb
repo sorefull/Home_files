@@ -10,7 +10,6 @@
 #  user_id       :integer
 #  image         :string
 #  about_welcome :boolean          default(FALSE)
-#  about_user    :integer          default(0), not null
 #
 
 class Post < ApplicationRecord

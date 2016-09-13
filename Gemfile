@@ -31,6 +31,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 gem 'will_paginate-bootstrap'
 gem 'pry'
+gem 'pry-remote'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'carrierwave', '~> 0.10.0'

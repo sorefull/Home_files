@@ -14,7 +14,7 @@ class PostsController < ApplicationController
   end
 
   def set_to_about_welcome
-    old_post = Post.find_by(about_welcome: :true)
+    old_post = Post.find_by(about_welcome: true)
     if old_post
       old_post.about_welcome = false
       old_post.save
@@ -30,6 +30,7 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.build(post_params)
+    @content = current_user.contents.build(content_params.merge(folder_id: Folder.find_by(title: :Post)))
     if @post.save
       redirect_to posts_path, :notice => "Your post was succesfully created."
     else
@@ -42,7 +43,6 @@ class PostsController < ApplicationController
       @post = Post.find(params[:id])
       @post.destroy
       FileUtils.rm_rf("public/uploads/post/image/#{params[:id]}")
-      # File.open("out.txt", "w") {|f| f.write("write your stuff here") }
       redirect_to posts_path, alert: "Your post was succesfully deleted!"
     else
       redirect_to posts_path, alert: "Unable for you."
