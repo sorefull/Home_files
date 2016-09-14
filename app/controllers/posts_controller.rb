@@ -30,7 +30,6 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.build(post_params)
-    @content = current_user.contents.build(content_params.merge(folder_id: Folder.find_by(title: :Post)))
     if @post.save
       redirect_to posts_path, :notice => "Your post was succesfully created."
     else
