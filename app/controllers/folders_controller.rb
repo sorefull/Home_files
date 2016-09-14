@@ -1,5 +1,6 @@
 class FoldersController < ApplicationController
   before_action :authenticate_user!, except: :public
+  before_action :owner?, only: [:show, :destroy]
 
   def index
     @folders = current_user.folders.all.order('created_at DESC').paginate(:page => params[:page], :per_page => 12)
@@ -24,16 +25,12 @@ class FoldersController < ApplicationController
   end
 
   def destroy
-    if current_user == Folder.find(params[:id]).user
-      @folder = current_user.folders.find(params[:id])
-      @folder.contents.each do |content|
-        FileUtils.rm_rf("public/uploads/content/content/#{content.id}")
-      end
-      @folder.destroy
-      redirect_to folders_path, alert: "Your folder was succesfully deleted!"
-    else
-      redirect_to root_path, alert: "Unable for you."
+    @folder = current_user.folders.find(params[:id])
+    @folder.contents.each do |content|
+      FileUtils.rm_rf("public/uploads/content/content/#{content.id}")
     end
+    @folder.destroy
+    redirect_to folders_path, alert: "Your folder was succesfully deleted!"
   end
 
   def about
@@ -49,5 +46,11 @@ class FoldersController < ApplicationController
   private
   def folder_params
     params.require(:folder).permit(:title)
+  end
+
+  def owner?
+    unless current_user == Folder.find(params[:id]).user
+      render file: "#{Rails.root}/public/404.html", layout: false, status: 404
+    end
   end
 end
