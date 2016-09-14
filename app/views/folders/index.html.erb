@@ -19,10 +19,5 @@
     </div>
   </div>
 <% else %>
-  <header class="jumbotron hero-spacer" style="background-image:url(images/folders/empty.jpg);color:white;">
-    <h1>No folders yet...</h1>
-    <p>
-      But you need them? Just click "New folder" and have fun!
-    </p>
-  </header>
+  <%= render 'sorry/no_folders.html.erb' %>
 <% end %>

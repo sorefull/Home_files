@@ -1,5 +1,5 @@
 class FoldersController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: :public
 
   def index
     @folders = current_user.folders.all.order('created_at DESC').paginate(:page => params[:page], :per_page => 12)

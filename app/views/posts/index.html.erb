@@ -20,10 +20,5 @@
     </div>
   </div>
 <% else %>
-  <header class="jumbotron hero-spacer" style="background-image:url(images/posts/empty.jpg);color:white;">
-    <h1>Sowwy, no posts yet...</h1>
-    <p>
-      I hope there wold be some posts in the nearest future. Wisit the <%= link_to 'Dash board', root_path %>, maybe there would be something to read.
-    </p>
-  </header>
+  <%= render 'sorry/no_posts.html.erb' %>
 <% end %>

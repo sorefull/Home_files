@@ -23,10 +23,5 @@
   </div>
 </div>
 <% else %>
-  <header class="jumbotron hero-spacer" style="background-image:url(images/posts/empty.jpg);color:white;">
-    <h1>Sory, no public FileUtils yet...</h1>
-    <p>
-      I hope there wold be some files in the nearest future. Wisit the <%= link_to 'Dash board', root_path %> or <%= link_to 'Family Blog', posts_path %> maybe there would be something to read.
-    </p>
-  </header>
+  <%= render 'sorry/no_public.html.erb' %>
 <% end %>
