@@ -1,0 +1,32 @@
+<div class="container">
+<table class="table">
+  <thead class="grey">
+    <tr>
+      <th>Username</th>
+      <th>Email</th>
+      <th>Post count</th>
+      <th>Folders count</th>
+      <th>Files count</th>
+      <th>Public files count</th>
+    </tr>
+  </thead>
+<tbody>
+<% @users.each do |user| %>
+  <% if user.admin? %>
+    <tr class="bg-danger">
+  <% else %>
+    <tr class="bg-deffault">
+  <% end %>
+    <td><%= link_to "#{user.username}#{user == current_user ? ' [you]' : (user.admin? ? ' [admin]' : '')}", admins_show_path(user.username) %></td>
+    <td><%= user.email %></td>
+    <td><%= user.posts.count %></td>
+    <td><%= user.folders.count %></td>
+    <td><%= user.contents.count %></td>
+    <td><%= user.contents.where(public: true).count %></td>
+
+  </tr>
+<% end %>
+</tbody>
+</table>
+<%= will_paginate @users, renderer: BootstrapPagination::Rails %>
+</div>

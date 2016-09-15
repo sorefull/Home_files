@@ -1,0 +1,18 @@
+  <div class="jumbotron">
+    <h2><%=  @user.username.capitalize %>
+      <span class="text-danger"><%= "[admin#{':you' if @user == current_user}]" if @user.admin? %></span>
+      <span class="text-success"><%= "[user]" if @user.user? %></span>
+    </h2>
+    <p>
+      User has <%= @user.posts.count %> post(s).
+    </p>
+    <ul>
+      <% @posts.each do |post| %>
+        <li><%= link_to post.title, post_path(post) %></li>
+      <% end %>
+
+    </ul>
+    <div>
+      <%= will_paginate @posts %>
+    </div>
+  </div>

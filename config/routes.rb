@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'admins', to: 'admins#index', as: 'admins_index'
+  get 'show/:username', to: 'admins#show', as: 'admins_show'
+   get 'change/:username', to: 'admins#change', as: 'admins_change'
+
   root 'welcome#index'
   get 'about', to: 'welcome#about', as: 'welcome_about'
 

@@ -9,4 +9,5 @@
     User.create(username: 'Oleg junior',
                 email: 'adminuser@example.com',
                 password: 'adminadmin',
-                password_confirmation: 'adminadmin')
+                password_confirmation: 'adminadmin',
+                role: 1)

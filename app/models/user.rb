@@ -16,6 +16,7 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  username               :string
+#  role                   :integer          default("user")
 #
 
 class User < ApplicationRecord
@@ -26,5 +27,5 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :folders, dependent: :destroy
   has_many :contents, dependent: :destroy
-
+  enum role: [:user, :admin] #[:moderator, :owner, etc]
 end
