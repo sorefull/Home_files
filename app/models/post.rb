@@ -16,6 +16,7 @@ class Post < ApplicationRecord
   belongs_to :user
   mount_uploader :image, ImageUploader
   validates_processing_of :image
+  validates_uniqueness_of :title
   validate :image_size_validation
   validates :title, presence: true, length: { in: 6..14 }
   validates :text, presence: true, length: { in: 10..300 }

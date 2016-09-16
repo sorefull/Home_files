@@ -1,4 +1,4 @@
-<%= bootstrap_form_for([@folder, @content]) do |f| %>
+<%= bootstrap_form_for @content, url: folder_contents_path do |f| %>
   <%= f.file_field :content %>
   <%= f.submit "Create!" %>
   <span>should be less than 500KB</span>

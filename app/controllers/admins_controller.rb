@@ -20,6 +20,32 @@ class AdminsController < ApplicationController
     end
   end
 
+  def set_to_about_welcome
+    old_post = Post.find_by(about_welcome: true)
+    if old_post
+      old_post.about_welcome = false
+      old_post.save
+    end
+    @post = Post.find_by(title: params[:title])
+    @post.about_welcome = true
+    if @post.save
+      redirect_to welcome_about_path, :notice => "Your about family was succesfully updated."
+    else
+      redirect_to post_show_path(@post.title), alert: @post.errors
+    end
+  end
+
+  def delete_about
+    old_post = Post.find_by(about_welcome: true)
+    if old_post
+      old_post.about_welcome = false
+      old_post.save
+      redirect_to welcome_about_path, notice: 'Info was succesfully deleted.'
+    else
+      redirect_to welcome_about_path, alert: 'Nothing to delete.'
+    end
+  end
+
   private
   def admin?
     render file: "#{Rails.root}/public/404.html", layout: false, status: 404 unless current_user.admin?

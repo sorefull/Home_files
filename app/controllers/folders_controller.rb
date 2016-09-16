@@ -1,6 +1,5 @@
 class FoldersController < ApplicationController
   before_action :authenticate_user!, except: :public
-  before_action :owner?, only: [:show, :destroy]
 
   def index
     @folders = current_user.folders.all.order('created_at DESC').paginate(:page => params[:page], :per_page => 12)
@@ -20,7 +19,8 @@ class FoldersController < ApplicationController
   end
 
   def show
-    @folder = current_user.folders.find(params[:id])
+    # binding.pry
+    @folder = current_user.folders.find_by(title: params[:title])
     @contents = @folder.contents.paginate(:page => params[:page], :per_page => 10)
   end
 
@@ -46,11 +46,5 @@ class FoldersController < ApplicationController
   private
   def folder_params
     params.require(:folder).permit(:title)
-  end
-
-  def owner?
-    unless current_user == Folder.find(params[:id]).user
-      render file: "#{Rails.root}/public/404.html", layout: false, status: 404
-    end
   end
 end

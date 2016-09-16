@@ -14,5 +14,5 @@
 <% if controller_name == 'contents' && action_name == 'new' %>
   <li><%= link_to 'All folders ', folders_path, :style => "color:CornflowerBlue;" %></li>
   <li><%= link_to '>' %></li>
-  <li><%= link_to @folder.title, folder_path(@folder), :style => "color:CornflowerBlue;" %></li>
+  <li><%= link_to @folder.title, folder_path(@folder.title), :style => "color:CornflowerBlue;" %></li>
   <% end %>

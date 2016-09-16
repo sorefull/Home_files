@@ -2,7 +2,7 @@
   <% if controller_name == 'posts' %>
     <li><%= link_to 'New post', new_post_path, :style => "color:CornflowerBlue;" %></li>
     <% if action_name == 'show' %>
-      <% if current_user.admin? %><li><%= link_to 'Set as a family info', set_welcome_path(@post) %></li><% end %>
+      <% if current_user.admin? %><li><%= link_to 'Set as a family info', set_welcome_path(@post.title) %></li><% end %>
       <% if current_user.admin? or @post.user == current_user %><li><%= link_to "Delete", @post, method: :delete, data: { confirm: "Are you sure?" }, :style => "color:LightCoral ;" %></li><% end %>
     <% end %>
   <% end %>
@@ -11,7 +11,7 @@
       <li><%= link_to 'New folder', new_folder_path, :style => "color:CornflowerBlue;" %></li>
     <% end %>
     <% if action_name == 'show' %>
-      <li><%= link_to 'New file', new_folder_content_path(@folder), :style => "color:CornflowerBlue;" %></li>
+      <li><%= link_to 'New file', new_folder_content_path(@folder.title), :style => "color:CornflowerBlue;" %></li>
       <li><%= link_to "Delete #{@folder.title}", @folder, method: :delete, data: { confirm: "Are you sure?" }, :style => "color:LightCoral ;"  %></li>
     <% end %>
   <% end %>
@@ -19,5 +19,8 @@
     <% if action_name == 'show' and @user != current_user %>
       <li><%= link_to "#{@user.admin? ? 'Make a user!' : 'Make an admin!'}", admins_change_path(@user.username), :style => "color:LightCoral ;" %></li>
     <% end %>
+  <% end %>
+  <% if controller_name == 'welcome' && action_name == 'about' && @post && current_user.admin? %>
+    <li><%= link_to 'Delete about info', delete_about_path, :style => "color:LightCoral ;"  %></li>
   <% end %>
 <% end %>
