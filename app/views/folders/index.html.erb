@@ -3,7 +3,7 @@
     <div class="row text-center">
       <% @folders.each do |folder| %>
         <div class="col-md-2 portfolio-item">
-          <%= link_to folder_show_path(folder.title) do %>
+          <%= link_to folder_path(folder) do %>
             <%= image_tag "folders/folder.png", class: "img-responsive" %>
           <h4>
             <%= folder.title %>

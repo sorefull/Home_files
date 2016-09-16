@@ -28,8 +28,8 @@
     <td><%= link_to content.content_identifier, content.content.url %></td>
     <td class="text-muted"><%= number_to_human_size(content.content.size) %></td>
     <td class="text-muted"><%= content.created_at.strftime('%b %d, %Y') %></td>
-    <td><%= link_to "Delete!", folder_content_path(@folder.title, content), data: { confirm: "Are you sure?" }, method: :delete,  :style => "color:LightCoral;"  %></td>
-    <td><%= link_to content.public ? 'Hide!' : 'Publish', set_public_path(@folder.title, content), :style => "color:CornflowerBlue;"  %></td>
+    <td><%= link_to "Delete!", [@folder, content], data: { confirm: "Are you sure?" }, method: :delete,  :style => "color:LightCoral;"  %></td>
+    <td><%= link_to content.public ? 'Hide!' : 'Publish', folder_set_public_path(@folder, content), :style => "color:CornflowerBlue;"  %></td>
   </tr>
 <% end %>
 </tbody>

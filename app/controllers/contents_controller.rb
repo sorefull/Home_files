@@ -10,12 +10,12 @@ class ContentsController < ApplicationController
     if params[:content]
       @content = current_user.contents.build(content_params.merge(folder_id: @folder.id))
       if @content.save
-        redirect_to folder_path(@folder.title), :notice => "Your file was succesfully added!"
+        redirect_to folder_path(@folder), :notice => "Your file was succesfully added!"
       else
-        redirect_to folder_path(@folder.title), alert: "Error in #{@content.errors}"
+        redirect_to folder_path(@folder), alert: "Error in #{@content.errors}"
       end
     else
-      redirect_to new_folder_content_path(@folder.title), alert: "File can't be blank"
+      redirect_to new_folder_content_path(@folder), alert: "File can't be blank"
     end
   end
 
@@ -33,7 +33,7 @@ class ContentsController < ApplicationController
   def public!
     @content = @folder.contents.find(params[:id])
     @content.public = @content.public ? false : true
-    redirect_to folder_show_path(@folder.title), :notice => "Your succesfully #{@content.public ? "published" : "hided"} your file!"
+    redirect_to folder_path(@folder), :notice => "Your succesfully #{@content.public ? "published" : "hided"} your file!"
     @content.save
   end
 
@@ -43,6 +43,6 @@ class ContentsController < ApplicationController
   end
 
   def set_folder
-    @folder = current_user.folders.find_by(title: params[:title])
+    @folder = current_user.folders.find(params[:folder_id])
   end
 end

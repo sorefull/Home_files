@@ -17,7 +17,7 @@
   <% else %>
     <tr class="bg-deffault">
   <% end %>
-    <td><%= link_to "#{user.username}#{user == current_user ? ' [you]' : (user.admin? ? ' [admin]' : '')}", admins_show_path(user.username) %></td>
+    <td><%= link_to "#{user.username}#{user == current_user ? ' [you]' : (user.admin? ? ' [admin]' : '')}", admins_show_path(user) %></td>
     <td><%= user.email %></td>
     <td><%= user.posts.count %></td>
     <td><%= user.folders.count %></td>

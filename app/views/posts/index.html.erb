@@ -3,7 +3,7 @@
     <div class="row">
       <% @posts.each do |post| %>
         <div class="col-md-4 portfolio-item">
-          <%= link_to post_show_path(post.title) do %>
+          <%= link_to post_path(post) do %>
             <%= image_tag post.image.blog.url, class: "img-responsive", style: "border-radius:5px;" %>
           <h3>
             <%= post.title %>
