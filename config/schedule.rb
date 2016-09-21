@@ -19,8 +19,10 @@
 
 # Learn more: http://github.com/javan/whenever
 
-set :environment, "development"
+set :environment, ENV['RAILS_ENV'] || 'development'
 set :output, {:error => "log/cron_error_log.log", :standard => "log/cron_log.log"}
+
+# every 1.minute do
 
 every :day, :at => '9:00pm' do
   rake 'email_sender'
