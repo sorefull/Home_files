@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Greet, <%= @user.username %></h1>
+    <p>
+      This is awweome posts for today, hope you'll got fun.<br>
+    </p>
+      <% @posts.each do |post| %>
+        <p>
+          <h2><%= link_to post.title, controller: :posts, action: :show, only_path: false, id: post.id, host: "localhost:3000" %></h2>
+          <%= post.text %>
+        </p>
+      <% end %>
+    <p>Have a great day!</p>
+  </body>
+</html>
