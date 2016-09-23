@@ -27,7 +27,7 @@ class AdminsController < ApplicationController
         old_post.about_welcome = false
         old_post.save
       end
-      @post = Post.find(params[:id])
+      @post = Post.friendly.find(params[:id])
       @post.about_welcome = true
       if @post.save
         redirect_to welcome_about_path, :notice => "Your about family was succesfully updated."

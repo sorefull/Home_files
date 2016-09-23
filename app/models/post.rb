@@ -10,9 +10,13 @@
 #  user_id       :integer
 #  image         :string
 #  about_welcome :boolean          default(FALSE)
+#  slug          :string
 #
 
 class Post < ApplicationRecord
+  extend FriendlyId
+  friendly_id :title, use: :slugged
+
   belongs_to :user
   mount_uploader :image, ImageUploader
   validates_processing_of :image

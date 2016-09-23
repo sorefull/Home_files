@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :set_post, only: [:show, :destroy]
   before_action :authenticate_user!, :except => [:index, :show]
 
   def index
@@ -10,7 +11,6 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
   end
 
   def create
@@ -23,8 +23,7 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    if current_user == Post.find(params[:id]).user
-      @post = Post.find(params[:id])
+    if current_user == @post.user
       @post.destroy
       FileUtils.rm_rf("public/uploads/post/image/#{params[:id]}")
       redirect_to posts_path, alert: "Your post was succesfully deleted!"
@@ -39,5 +38,9 @@ class PostsController < ApplicationController
   private
   def post_params
     params.require(:post).permit(:title, :text, :image)
+  end
+
+  def set_post
+    @post = Post.friendly.find(params[:id])
   end
 end

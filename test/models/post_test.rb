@@ -10,6 +10,7 @@
 #  user_id       :integer
 #  image         :string
 #  about_welcome :boolean          default(FALSE)
+#  slug          :string
 #
 
 require 'test_helper'
