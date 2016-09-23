@@ -22,6 +22,7 @@ class Post < ApplicationRecord
   validates_processing_of :image
   validate :image_size_validation
   validates :title, presence: true, length: { in: 6..14 }
+  validates_uniqueness_of :title
   validates :text, presence: true, length: { in: 10..300 }
   validates :image, presence: true
 

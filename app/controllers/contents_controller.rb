@@ -43,6 +43,6 @@ class ContentsController < ApplicationController
   end
 
   def set_folder
-    @folder = current_user.folders.find(params[:folder_id])
+    @folder = current_user.folders.friendly.find(params[:folder_id])
   end
 end

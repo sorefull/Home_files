@@ -23,9 +23,11 @@ class PostsController < ApplicationController
   end
 
   def destroy
+    binding.pry
     if current_user == @post.user
+      id = @post.id
       @post.destroy
-      FileUtils.rm_rf("public/uploads/post/image/#{params[:id]}")
+      FileUtils.rm_rf("public/uploads/post/image/#{id}")
       redirect_to posts_path, alert: "Your post was succesfully deleted!"
     else
       redirect_to posts_path, alert: "Unable for you."

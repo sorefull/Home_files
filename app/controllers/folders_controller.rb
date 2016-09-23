@@ -1,6 +1,7 @@
 class FoldersController < ApplicationController
   before_action :authenticate_user!, except: :public
-  before_action :owner?, only: [:show, :destroy]
+  before_action :owner?, only: :set_folder
+  before_action :set_folder, only: [:show, :destroy]
 
   def index
     @folders = current_user.folders.all.order('created_at DESC').paginate(:page => params[:page], :per_page => 12)
@@ -20,12 +21,10 @@ class FoldersController < ApplicationController
   end
 
   def show
-    @folder = current_user.folders.find(params[:id])
     @contents = @folder.contents.paginate(:page => params[:page], :per_page => 10)
   end
 
   def destroy
-    @folder = current_user.folders.find(params[:id])
     @folder.contents.each do |content|
       FileUtils.rm_rf("public/uploads/content/content/#{content.id}")
     end
@@ -49,8 +48,12 @@ class FoldersController < ApplicationController
   end
 
   def owner?
-    unless current_user == Folder.find(params[:id]).user
+    unless current_user == Folder.friendly.find(params[:id]).user
       render file: "#{Rails.root}/public/404.html", layout: false, status: 404
     end
+  end
+
+  def set_folder
+    @folder = current_user.folders.friendly.find(params[:id])
   end
 end
