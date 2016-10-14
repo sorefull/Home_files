@@ -2,9 +2,9 @@
   <div class="container">
     <div class="row">
       <% @posts.each do |post| %>
-        <div class="col-md-4 portfolio-item">
+        <div class="col-md-12 portfolio-item">
           <%= link_to post_path(post) do %>
-            <%= image_tag post.image.blog.url, class: "img-responsive", style: "border-radius:5px;" %>
+            <%= image_tag post.image.show.url, class: "img-responsive", style: "border-radius:5px;" %>
           <h3>
             <%= post.title %>
           </h3>
